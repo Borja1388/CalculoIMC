@@ -10,16 +10,13 @@ import java.text.DecimalFormat;
 import java.util.ResourceBundle;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.RadioButton;
-import javafx.scene.control.ScrollBar;
 import javafx.scene.control.Slider;
-import javafx.scene.control.TextField;
 import javafx.scene.control.Toggle;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.input.MouseEvent;
@@ -70,7 +67,6 @@ public class FXMLDocumentController implements Initializable {
         peso.setStyle("-fx-border-color: black");
         altura.setStyle("-fx-border-color: black");
         resultado.setStyle("-fx-border-color: black");
-        calculo.setStyle("-fx-border-color: black");
         
         
     }

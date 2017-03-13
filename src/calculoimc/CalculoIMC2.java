@@ -15,7 +15,7 @@ import javafx.stage.Stage;
  *
  * @author Borja
  */
-public class CalculoIMC extends Application {
+public class CalculoIMC2 extends Application {
     
     @Override
     public void start(Stage stage) throws Exception {
