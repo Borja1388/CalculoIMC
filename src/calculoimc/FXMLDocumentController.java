@@ -8,10 +8,14 @@ package calculoimc;
 import java.net.URL;
 import java.text.DecimalFormat;
 import java.util.ResourceBundle;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.control.ListView;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.ScrollBar;
 import javafx.scene.control.Slider;
@@ -28,13 +32,12 @@ import javafx.scene.layout.AnchorPane;
 public class FXMLDocumentController implements Initializable {
 
     @FXML
-    private TextField altura;
+    private Label altura;
     @FXML
-    private TextField peso;
-    @FXML
+    private Label peso;
     private Button calculo;
     @FXML
-    private TextField resultado;
+    private Label resultado;
     @FXML
     private RadioButton obesidad;
     @FXML
@@ -49,6 +52,7 @@ public class FXMLDocumentController implements Initializable {
     private double peso2;
     private double altura2;
     private double resultadoFinal;
+    ObservableList<String> pesos = FXCollections.observableArrayList("Obesidad","Sobrepeso","Normal","Extra-delgadez");
     @FXML
     private ToggleGroup tipoPeso;
     @FXML
@@ -56,7 +60,9 @@ public class FXMLDocumentController implements Initializable {
     @FXML
     private Slider slider;
     @FXML
-    private ScrollBar scroll;
+    private Slider scroll;
+    @FXML
+    private ListView<?> list1;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -66,10 +72,9 @@ public class FXMLDocumentController implements Initializable {
         resultado.setStyle("-fx-border-color: black");
         calculo.setStyle("-fx-border-color: black");
         
+        
     }
-
-    @FXML
-    private void calculoIMC(ActionEvent event) {
+    public void calcularIMC(){
         Toggle seleccionado = tipoPeso.getSelectedToggle();
         DecimalFormat df = new DecimalFormat("#.##");
         altura1 = altura.getText();
@@ -111,20 +116,20 @@ public class FXMLDocumentController implements Initializable {
             resultado.setStyle("-fx-background-color: white;");
 
         }
-        
-
     }
 
     @FXML
     private void seleccionarAltura(MouseEvent event) {
-        int valor=(int) slider.getValue();
+        double valor=(double) slider.getValue();
         altura.setText(valor + "");
+        calcularIMC();
     }
 
     @FXML
     private void seleccionarPeso(MouseEvent event) {
-        int valor2=(int) scroll.getValue();
+        double valor2=(double) scroll.getValue();
         peso.setText(valor2 + "");
+        calcularIMC();
     }
 
 }
