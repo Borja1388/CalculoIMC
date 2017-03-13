@@ -32,7 +32,6 @@ public class FXMLDocumentController implements Initializable {
     private Label altura;
     @FXML
     private Label peso;
-    private Button calculo;
     @FXML
     private Label resultado;
     @FXML
@@ -59,13 +58,14 @@ public class FXMLDocumentController implements Initializable {
     @FXML
     private Slider scroll;
     @FXML
-    private ListView<?> list1;
+    private ListView<String> list1;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        list1.setItems(pesos);
         panel.setStyle("-fx-background-color: orange;");
-        peso.setStyle("-fx-border-color: black");
-        altura.setStyle("-fx-border-color: black");
+//        peso.setStyle("-fx-border-color: black");
+//        altura.setStyle("-fx-border-color: black");
         resultado.setStyle("-fx-border-color: black");
         
         
@@ -92,23 +92,27 @@ public class FXMLDocumentController implements Initializable {
 
         if (resultadoFinal > 30) {
             obesidad.setSelected(true);
+            list1.getSelectionModel().select(0);
             resultado.setStyle("-fx-background-color: yellow;");
             
 
         }
         if (resultadoFinal > 25 && resultadoFinal < 29.9) {
             sobrepeso.setSelected(true);
+            list1.getSelectionModel().select(1);
             resultado.setStyle("-fx-background-color: white;");
 
         }
         if (resultadoFinal < 18.5) {
             extra.setSelected(true);
+            list1.getSelectionModel().select(3);
             resultado.setStyle("-fx-background-color: yellow;");
             
 
         }
         if (resultadoFinal > 18.5 && resultadoFinal < 24.9) {
             normal.setSelected(true);
+            list1.getSelectionModel().select(2);
             resultado.setStyle("-fx-background-color: white;");
 
         }
