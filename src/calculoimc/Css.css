@@ -7,8 +7,23 @@ and open the template in the editor.
     Created on : 14-mar-2017, 9:01:08
     Author     : admin
 */
-#list1{
-    -fx-background-color: blue;
-    
+
+
+.list-cell:filled:selected:focused, .list-cell:filled:selected {
+    -fx-background-color: linear-gradient(#ffff00 0%, #cc6600 25%, #ff0000 75%, #990033 50%);
+    -fx-text-fill: black;
 }
+
+
+.list-cell:odd { 
+    -fx-background-color: #0099ff;
+}
+.list-cell:even{
+   -fx-background-color: #00ccff; 
+}
+.resultado{
+    -fx-background-color:transparent;
+}
+
+
 

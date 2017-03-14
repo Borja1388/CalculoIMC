@@ -24,7 +24,6 @@ import javafx.scene.control.Toggle;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.Background;
 import javafx.stage.StageStyle;
 
 /**
@@ -69,7 +68,7 @@ public class FXMLDocumentController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         list1.setItems(pesos);
         resultado.setText("Su IMC es : ");
-        panel.setStyle("-fx-background-color: orange;");
+        panel.setStyle("-fx-background-color: linear-gradient(#ff0066 0%, #33ccff 25%, #66ff66 50%,  #ffff1a 75%);");
        
         
         
@@ -96,7 +95,9 @@ public class FXMLDocumentController implements Initializable {
         if (resultadoFinal > 30) {
             obesidad.setSelected(true);
             list1.getSelectionModel().select(0);
-            resultado.setStyle("-fx-background-color: yellow;");
+            resultado.setStyle("-fx-text-fill: yellow;");
+            
+            
             Alert dialogoAlerta = new Alert(Alert.AlertType.INFORMATION);
             dialogoAlerta.setTitle("Alerta");
             dialogoAlerta.setHeaderText("Los resultados de tu IMC son:Deja de comer bolleria");
@@ -109,7 +110,7 @@ public class FXMLDocumentController implements Initializable {
         if (resultadoFinal > 25 && resultadoFinal < 29.9) {
             sobrepeso.setSelected(true);
             list1.getSelectionModel().select(1);
-            resultado.setStyle("-fx-background-color: white;");
+//            resultado.setStyle("-fx-background-color: white;");
 
         }
         if (resultadoFinal < 18.5) {
@@ -129,7 +130,7 @@ public class FXMLDocumentController implements Initializable {
         if (resultadoFinal > 18.5 && resultadoFinal < 24.9) {
             normal.setSelected(true);
             list1.getSelectionModel().select(2);
-            resultado.setStyle("-fx-background-color: white;");
+//            resultado.setStyle("-fx-background-color: white;");
 
         }
     }

@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.effect.*?>
 <?import javafx.scene.text.*?>
 <?import java.lang.*?>
 <?import java.util.*?>
@@ -46,7 +47,10 @@
             <Font name="System Bold" size="12.0" />
          </font></RadioButton>
       <Slider fx:id="slider" layoutX="84.0" layoutY="67.0" majorTickUnit="20.0" max="220.0" min="20.0" onMouseClicked="#seleccionarAltura" prefHeight="38.0" prefWidth="214.0" showTickLabels="true" showTickMarks="true" value="170.0" />
-      <ListView fx:id="list1" layoutX="26.0" layoutY="238.0" prefHeight="200.0" prefWidth="200.0" stylesheets="@Css.css" />
+      <ListView fx:id="list1" layoutX="26.0" layoutY="238.0" prefHeight="91.0" prefWidth="200.0" stylesheets="@Css.css">
+         <effect>
+            <InnerShadow color="#b6cd23" />
+         </effect></ListView>
       <Slider fx:id="scroll" layoutX="87.0" layoutY="123.0" majorTickUnit="20.0" max="180.0" min="20.0" onMouseClicked="#seleccionarPeso" prefHeight="14.0" prefWidth="214.0" showTickLabels="true" showTickMarks="true" value="70.0" />
       <Label fx:id="altura" layoutX="316.0" layoutY="69.0" />
       <Label fx:id="peso" layoutX="316.0" layoutY="113.0" />
