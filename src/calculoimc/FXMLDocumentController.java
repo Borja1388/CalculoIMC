@@ -7,12 +7,15 @@ package calculoimc;
 
 import java.net.URL;
 import java.text.DecimalFormat;
+import java.util.Optional;
 import java.util.ResourceBundle;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.RadioButton;
@@ -21,6 +24,8 @@ import javafx.scene.control.Toggle;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.Background;
+import javafx.stage.StageStyle;
 
 /**
  *
@@ -63,20 +68,18 @@ public class FXMLDocumentController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         list1.setItems(pesos);
+        resultado.setText("Su IMC es : ");
         panel.setStyle("-fx-background-color: orange;");
-//        peso.setStyle("-fx-border-color: black");
-//        altura.setStyle("-fx-border-color: black");
-        resultado.setStyle("-fx-border-color: black");
+       
         
         
     }
     public void calcularIMC(){
         Toggle seleccionado = tipoPeso.getSelectedToggle();
         DecimalFormat df = new DecimalFormat("#.##");
-        altura1 = altura.getText();
-        peso1 = peso.getText();
-        peso2 = Double.parseDouble(peso1);
-        altura2 = Double.parseDouble(altura1);
+        altura2 = slider.getValue();
+        peso2 = scroll.getValue();
+        
         altura2 = altura2 / 100;
         if (peso2 < 20 || peso2 > 180 && altura2 < 40 || altura2 > 220) {
             resultado.setText("Error al introducir los datos");
@@ -86,7 +89,7 @@ public class FXMLDocumentController implements Initializable {
         } else {
             resultadoFinal = peso2 / (altura2 * altura2);
             resultado1 = String.valueOf(df.format(resultadoFinal));
-            resultado.setText(resultado1);
+            resultado.setText("Su IMC es : " +resultado1);
 
         }
 
@@ -94,6 +97,12 @@ public class FXMLDocumentController implements Initializable {
             obesidad.setSelected(true);
             list1.getSelectionModel().select(0);
             resultado.setStyle("-fx-background-color: yellow;");
+            Alert dialogoAlerta = new Alert(Alert.AlertType.INFORMATION);
+            dialogoAlerta.setTitle("Alerta");
+            dialogoAlerta.setHeaderText("Los resultados de tu IMC son:Deja de comer bolleria");
+            dialogoAlerta.setContentText("Porfavor busca ayuda profesional");
+            dialogoAlerta.initStyle(StageStyle.UTILITY);
+            Optional<ButtonType> result = dialogoAlerta.showAndWait();
             
 
         }
@@ -107,6 +116,13 @@ public class FXMLDocumentController implements Initializable {
             extra.setSelected(true);
             list1.getSelectionModel().select(3);
             resultado.setStyle("-fx-background-color: yellow;");
+            Alert dialogoAlerta = new Alert(Alert.AlertType.CONFIRMATION);
+            dialogoAlerta.setTitle("Alerta");
+            dialogoAlerta.setHeaderText("Come un poco mas y deja de jugar a League of Legends");
+            dialogoAlerta.setContentText("Porfavor busca ayuda profesional");
+            dialogoAlerta.initStyle(StageStyle.UTILITY);
+            Optional<ButtonType> result = dialogoAlerta.showAndWait();
+            
             
 
         }
